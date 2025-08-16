@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  jekyll:
+    image: krsahil8825/jekyll-ruby-3.4-alpine:0.0.1.RELEASE
+    container_name: jekyll_container
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./src:/jekyll/workdir
+    tty: true
